@@ -1,0 +1,22 @@
+#!/bin/sh
+
+finalname=${1-video.webm}
+url=${2-"$(xclip -o -selection clipboard)"}
+tempname="$(echo $finalname | cut -f1 -d'.')"
+
+if [ -f "$tempname".* ] ; then
+	echo "ydl: File '$tempname' already exists, choose a different name"
+	exit 1
+fi
+
+echo youtube-dl -o "$tempname"'.%(ext)s' "$url" '2>/dev/null' | lolcat
+youtube-dl -o "$tempname"'.%(ext)s' "$url" 2>/dev/null
+
+if [ "$finalname" != "$tempname" ] ; then
+	if [ -f "$finalname" ] ; then
+		:
+	else
+		echo ffmpeg -i "$tempname".* "$finalname" -loglevel warning -stats | lolcat
+		ffmpeg -i "$tempname".* "$finalname" -loglevel warning -stats
+	fi
+fi

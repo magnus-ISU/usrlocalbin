@@ -1,0 +1,5 @@
+#!/bin/bash
+xhost +SI:localuser:wine
+if [ "$#" != 0 ]; then
+	doas -u wine env HOME=/home/wine USER=wine USERNAME=wine LOGNAME=wine wine "$@"
+fi

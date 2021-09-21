@@ -1,0 +1,4 @@
+#!/bin/sh
+du -hd 1 --exclude=/proc* "$@" 2>/dev/null | sort -h | lolcat
+#find $1 -maxdepth 1 -type f -printf "%s\t%p\n" | sort -hr | awk 'function human(x) {
+ls -laFh "$@" | sed '/^d/d;/^total/d' | awk '{print $5 "\t" $9}' | sort -hr

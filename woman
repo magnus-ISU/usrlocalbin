@@ -1,0 +1,5 @@
+#!/bin/sh
+
+manpage=`find /usr/share/man /usr/local/man/ -type f | sed 's/.gz//; s|.*/||; s/\(.*\)\./\1 /' | sort | dmenu -i -l 25 | awk '{printf("%s %s", $2, $1)}'` #Number after, shorter
+if [ -z "$manpage" ]; then exit 1; fi
+man -t $manpage | ps2pdf - | zathura - --mode=fullscreen

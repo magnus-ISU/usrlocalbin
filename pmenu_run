@@ -1,0 +1,15 @@
+#!/bin/sh
+pmenu -P /home/mag/pic/icons/ -r 3 <<! | sh
+IMG:folder.png		pcmanfm
+IMG:librewolf.png	librewolf
+IMG:power.webp
+	IMG:phoenix.png		reboot
+	IMG:skull.png		shutdown now
+IMG:art.webp
+	IMG:krita.png		krita
+	IMG:gimp.webp		gimp
+IMG:message.webp
+	IMG:discord.webp	librewolf discord.com/login
+	IMG:nheko.png		nheko
+	IMG:hexchat.png		hexchat
+!

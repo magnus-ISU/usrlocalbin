@@ -1,0 +1,2 @@
+#!/bin/sh
+pass generate -c $(dmenu </dev/null)
