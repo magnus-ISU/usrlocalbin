@@ -1,0 +1,16 @@
+#!/bin/sh
+
+tmp_file="/tmp/slop-tesseract.png"
+trap 'rm "$tmp_file"' 0 1 2 3 6
+
+sel=$(slop -f "-i %i -g %g")
+shotgun $sel "-" > "$tmp_file"
+
+scanresult=$(tesseract 2>/dev/null "$tmp_file" - | sed '/^[[:space:]]*$/d')
+
+if [ -z "$scanresult" ]; then
+	notify-send "Tesseract" "No scan data found"
+else
+	echo "$scanresult" | xclip -selection c
+	notify-send "Tesseract" "$scanresult\n(copied to clipboard)"
+fi
