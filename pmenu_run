@@ -12,4 +12,7 @@ IMG:message.webp
 	IMG:discord.webp	librewolf discord.com/login &
 	IMG:nheko.png		nheko &
 	IMG:hexchat.png		hexchat &
+IMG:office.png
+	IMG:notebook.png	notepadqq &
+	IMG:libreoffice.png	libreoffice &
 !
