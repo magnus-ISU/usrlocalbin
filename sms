@@ -1,0 +1,49 @@
+#!/bin/bash
+
+config_file="$XDG_DATA_HOME/sms.save"
+usage() {
+	printf 'Usage: sms [-t TO] [-f FROM] Message to be sent\n'
+}
+
+to="19738793899"
+from='Galaxy S6 Edge+'
+msg=""
+
+# Load previous settings
+[ -e "$config_file" ] || touch "$config_file"
+source "$config_file"
+
+# Get CLI args
+while true; do
+	OPTIND=1
+	while getopts "ht:f:n:" opt; do
+		case "$opt" in
+		t)  to="$OPTARG"    ;;
+		f)  from="$OPTARG"  ;;
+		h)
+			usage
+			exit 0
+			;;
+		esac
+	done
+	shift $((OPTIND-1))
+
+	# If at the end, break
+	[ "$#" -eq 0 ] && break
+	
+	# If `-f` not provided, use the first non-flag argument as the image file, and continue parsing options
+	[[ -z "$msg" ]] || msg+=" "
+	msg+="$1"
+	shift 1
+done
+
+cat $config_file
+echo =============
+echo "$msg"
+echo =============
+
+read -r -p "Send? [Y/n] " input
+[ "n" = $input ] || kdeconnect-cli -n "$from" --send-sms "$msg" --destination "$to"
+
+printf "to='$to'\n" > "$config_file"
+printf "from='$from'\n" >> "$config_file"
