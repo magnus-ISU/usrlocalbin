@@ -1,0 +1,5 @@
+#!/bin/bash
+
+paru -Qqtd | doas paru -Rs -
+doas journalctl --vacuum-size=1M
+doas pacman -Scc
