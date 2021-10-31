@@ -9,8 +9,8 @@ if [ -f "$tempname".* ] ; then
 	exit 1
 fi
 
-echo youtube-dl -o "$tempname"'.%(ext)s' "$url" '2>/dev/null' | lolcat
-youtube-dl -o "$tempname"'.%(ext)s' "$url" 2>/dev/null
+echo yt-dlp -o "$tempname"'.%(ext)s' "$url" '2>/dev/null' | lolcat
+yt-dlp -o "$tempname"'.%(ext)s' "$url" 2>/dev/null
 
 if [ "$finalname" != "$tempname" ] ; then
 	if [ -f "$finalname" ] ; then
