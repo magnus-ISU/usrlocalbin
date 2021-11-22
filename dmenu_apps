@@ -1,2 +1,2 @@
 #!/bin/sh
-gtk-launch `ls /usr/share/applications/*.desktop /usr/local/share/applications/*.desktop ~/.local/share/applications/*.desktop 2>/dev/null | sed 's|.*/||;s/\.desktop//' | dmenu`
+gtk-launch `ls /usr/share/applications/*.desktop /usr/local/share/applications/*.desktop ~/.local/share/applications/*.desktop 2>/dev/null | sed 's|.*/||;s/\.desktop//' | dmenu "$@"`
