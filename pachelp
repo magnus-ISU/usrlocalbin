@@ -1,0 +1,13 @@
+#!/bin/sh
+command="$1"
+shift 1
+case $command in
+	own) pacman -Qo "$@" ;;
+	files) pacman -Ql "$@" ;;
+	*)
+		printf 'pachelp: Usage: pachelp COMMAND ARG(S)\n\nPrints information acquired by obscure pacman flags\n\nCOMMAND is one of\n'
+		printf '\town FILE\tpacman -Qo FILE\n\t\tPrints what package owns FILE\n'
+		printf '\tfiles PACKAGE\tpacman -Ql PACKAGE\n\t\tPrints what files are contained in PACKAGE'
+		exit 0
+		;;
+esac
