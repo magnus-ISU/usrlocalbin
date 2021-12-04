@@ -1,7 +1,6 @@
 #!/bin/sh
 
 /usr/lib/kdeconnectd &
+trap 'killall kdeconnectd' 0 1 2 3 6
 
 kdeconnect-app
-
-killall kdeconnectd
