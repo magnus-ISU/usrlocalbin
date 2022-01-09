@@ -1,1 +1,2 @@
+#!/bin/sh
 clang-format --style='{BasedOnStyle: llvm,UseTab: ForIndentation,TabWidth: 2,ColumnLimit: 1000,AlwaysBreakAfterReturnType: None}'
