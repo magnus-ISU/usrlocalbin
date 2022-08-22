@@ -1,2 +1,2 @@
 #!/bin/sh
-gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=- -f "$@"
+gs -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=%stderr% -f "$@"
